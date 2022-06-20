@@ -32,6 +32,7 @@ func main() {
 	// 次のブロックのデータが入力元から読み込まれ、データがあればtrueを返し、forループの継続条件に使われる
 	for s.Scan() {
 		t := transforms[rand.Intn(len(transforms))]
+		// bufio.ScannerのTextメソッドは読み込まれたバイト列(スライス)を文字列に変換する
 		fmt.Println(strings.Replace(t, otherWord, s.Text(), -1))
 	}
 }
