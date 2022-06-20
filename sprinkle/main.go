@@ -13,18 +13,20 @@ const otherWord = "*"
 
 var transforms = []string{
 	otherWord,
-	otherWord,
-	otherWord,
-	otherWord,
-	otherWord + "app",
-	otherWord + "site",
-	otherWord + "time",
-	"get" + otherWord,
-	"go" + otherWord,
-	"lets " + otherWord,
 }
 
 func main() {
+	file, err := os.Open("transforms.txt")
+	if err != nil {
+		fmt.Println(err)
+		panic(err)
+	}
+	defer file.Close()
+	fileScanner := bufio.NewScanner(file)
+	for fileScanner.Scan() {
+		transforms = append(transforms, fileScanner.Text())
+	}
+
 	// 乱数の元となる値を現在時刻から生成
 	rand.Seed(time.Now().UTC().UnixNano())
 	// 標準入力のストリームからデータを読み込むbufio.Scannerオブジェクト
