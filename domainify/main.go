@@ -20,6 +20,7 @@ func main() {
 	for s.Scan() {
 		text := strings.ToLower(s.Text())
 		var newText []rune
+		// 文字列に対してrangeを実行すると、インデックスとrune型の値が返される
 		for _, r := range text {
 			if unicode.IsSpace(r) {
 				r = '-'
