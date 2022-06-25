@@ -3,5 +3,6 @@
 # compile
 sprinkle/sprinkle
 domainify/domainify
+coolify/coolify
 
 .env
